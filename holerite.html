@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Holerite - {{ nome }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { text-align: center; }
+        .info, .valores { margin-bottom: 20px; }
+        .valores th, .valores td { padding: 8px; border: 1px solid #ccc; }
+        .valores { border-collapse: collapse; width: 100%; } 
+    </style>
+</head>
+<body>
+    <h1>Holerite = {{ mes }}</h1>
+
+    <div class="info">
+        <p><strong>Funcionário:</strong> {{ nome }}</p>
+        <p><strong>Mês:</strong> {{ mes }}</p>
+        <p><strong>Dias Trabalhados:</strong> {{ dias }}</p>
+        <p><strong>Horas Trabalhadas:</strong> {{ horas }}</p>
+    </div>
+
+    <table class="valores">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Valor (R$)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Salário Proporcional</td>
+                <td>{{ salario }}</td>
+            </tr>
+            <tr>
+                <td>Descontos</td>
+                <td>0.00</td>
+            </tr>
+            <tr>
+                <td>strong>Valor líquido</strong></td>
+                <td><strong>{{ salario }}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

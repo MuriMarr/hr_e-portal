@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Histórico de Pontos{% endblock %}
+{% block content %}
+
+<h2 class="mb-3">Histórico de Pontos</h2>
+
+<form method="GET" class="row g-3 mb-4">
+    <div class="col-auto">
+        <label for="mes" class="form-label">Filtrar por Mês:</label>
+        <input type="month" id="mes" name="mes" class="form-control" value="{{ mes_atual }}">
+    </div>
+    <div class="col-auto align-self-end">
+        <button type="submit class="btn btn-primary">Filtrar</button>
+        <a href="{{ url_for('historico') }}" class="btn btn-secondary">Limpar Filtro</a>
+    </div>
+</form>
+
+<a href="{{ url_for('gerar_holerite', mes=mes_atual) }}" class="btn btn-outline-primary mb-3">Baixar Holerite em PDF</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Entrada</th>
+            <th>Saída</th>
+            <th>Horas Trabalhadas</th>
+            <th>Saldo do Dia</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in registros %}
+        <tr>
+            <td>{{ r.data }}</td>
+            <td>{{ r.entrada or '—' }}</td>
+            <td>{{ r.saida or '—' }}</td>
+            <td>{{ r.horas_trabalhadas }}</td>
+            <td>{{ r.saldo_dia }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="alert alert-info">
+    <strong>Banco de Horas/Horas Extras Acumulados:</strong> {{ saldo_total }}
+</div>
+
+<a href="{{ url_for('dashboard') }}" class="btn btn-primary">Voltar ao Painel</a>
+
+{% endblock %}

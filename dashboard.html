@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+<h2 class="mb-3">Painel de Controle</h2>
+<p>Bem-vindo, <strong>{{ nome }}</strong>!</p>
+
+{% if tipo == 'admin' %}
+    <p>Você está logado como <strong>Administrador</strong>.</p>
+    <a href="#" class="btn btn-outline-primary">Cadastrar Funcionário</a>
+    <a href="#" class="btn btn-outline-secondary">Ver Registros</a>
+    <a href="#" class="btn btn-outline-success">Gerar Holerites</a>
+{% else %}
+    <p>Você está logado como <strong>Funcionário</strong>.</p>
+    <a href="{{ url_for('registrar_entrada') }}" class="btn btn-outline-primary">Registrar Entrada</a>
+    <a href="{{ url_for('registrar_saida') }}" class="btn btn-outline-danger">Registrar Saída</a>
+    <a href="{{ url_for('historico') }}" class="btn btn-outline-dark">Ver Meu Histórico</a>
+{% endif %}
+
+{% endblock %}

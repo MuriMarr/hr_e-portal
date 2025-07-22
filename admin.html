@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Painel Administrativo{% endblock %}
+{% block content %}
+
+<h2 class="mb-3">Painel Administrativo</h2>
+
+<a href="{{ url_for('cadastrar-funcionario') }}" class="btn btn-success mb-3">Cadastrar Funcionário</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for f in funcionarios %}
+        <tr>
+            <td>{{ f.nome }}</td>
+            <td>{{ f.email }}</td>
+            <td>{{ f.tipo }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
