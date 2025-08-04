@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
-{% block title %}Dashboard{% endblock %}
+{% block title %}Painel Do Funcionário{% endblock %}
 {% block content %}
 
-<h2 class="mb-3">Painel de Controle</h2>
-<p>Bem-vindo, <strong>{{ nome }}</strong>!</p>
+<div class="container mt-4">
+    <h2 class="mb-3">Portal do Funcionário</h2>
+    <p>Bem-vindo, <strong>{{ nome }}</strong>!</p>
 
-{% if tipo == 'admin' %}
-    <p>Você está logado como <strong>Administrador</strong>.</p>
-    <a href="#" class="btn btn-outline-primary">Cadastrar Funcionário</a>
-    <a href="#" class="btn btn-outline-secondary">Ver Registros</a>
-    <a href="#" class="btn btn-outline-success">Gerar Holerites</a>
-{% else %}
-    <p>Você está logado como <strong>Funcionário</strong>.</p>
-    <a href="{{ url_for('registrar_entrada') }}" class="btn btn-outline-primary">Registrar Entrada</a>
-    <a href="{{ url_for('registrar_saida') }}" class="btn btn-outline-danger">Registrar Saída</a>
-    <a href="{{ url_for('historico') }}" class="btn btn-outline-dark">Ver Meu Histórico</a>
-{% endif %}
-
+    {% if current_user.tipo == 'admin' %}
+        <p>Você está logado como <strong>Administrador</strong>.</p>
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-primary">Painel Completo</a>
+        <a href="{{ url_for('cadastrar_funcionario') }}" class="btn btn-outline-primary">Cadastrar Funcionário</a>
+        <a href="{{ url_for('cadastrar_admin') }}" class="btn btn-outline-warning mb-2">Cadastrar Admin</a>
+    {% elif current_user.tipo == 'funcionario' %}
+        <p>Você está logado como <strong>Funcionário</strong>.</p>
+        <a href="{{ url_for('registrar_entrada') }}" class="btn btn-outline-primary">Registrar Entrada</a>
+        <a href="{{ url_for('registrar_saida') }}" class="btn btn-outline-danger">Registrar Saída</a>
+        <a href="{{ url_for('historico') }}" class="btn btn-outline-dark">Ver Meu Histórico</a>
+    {% endif %}
+</div>
 {% endblock %}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>TRCT - Termo de Rescisão</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            font-size: 14px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .info, .valores {
+            margin-bottom: 25px;
+        }
+        .info p, .valores p {
+            margin: 5px 0;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        hr {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>TRCT - Termo de Rescisão do Contrato de Trabalho</h1>
+
+    <div class="info">
+        <p><strong>Nome do Funcionário:</strong> {{ funcionario.nome }}</p>
+        <p><strong>CPF:</strong> {{ funcionario.cpf or '—' }}</p>
+        <p><strong>Email:</strong> {{ funcionario.email }}</p>
+        <p><strong>Data de Admissão:</strong> {{ trct.admissao }}</p>
+        <p><strong>Data de Demissão:</strong> {{ trct.demissao }}</p>
+        <p><strong>Motivo da Rescisão:</strong> {{ trct.motivo_rescisao }}</p>
+    </div>
+
+    <hr>
+
+    <div class="valores">
+        <p><strong>Saldo de Salário:</strong> R$ {{ trct.saldo_salario }}</p>
+        <p><strong>Férias Vencidas + 1/3:</strong> R$ {{ trct.ferias_vencidas }}</p>
+        <p><strong>Férias Proporcionais + 1/3:</strong> R$ {{ trct.ferias_proporcionais }}</p>
+        <p><strong>13º Salário Proporcional:</strong> R$ {{ trct.decimo_terceiro }}</p>
+        <p><strong>Multa do FGTS (40%):</strong> R$ {{ trct.multa_fgts }}</p>
+    </div>
+
+    <hr>
+
+    <div class="valores">
+        <p><strong>Desconto INSS (8%):</strong> -R$ {{ trct.desconto_inss }}</p>
+        <p><strong>Desconto VT (5%):</strong> -R$ {{ trct.desconto_vt }}</p>
+    </div>
+
+    <hr>
+
+    <p class="total">Total Líquido a Receber: <strong>R$ {{ trct.total_liquido }}</strong></p>
+
+    <br><br>
+    <p><strong>Assinatura do Empregador:</strong> ____________________________________________</p>
+    <p><strong>Assinatura do Funcionário:</strong> ____________________________________________</p>
+    <p><strong>Data:</strong> ____/____/______</p>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Funcionários{% endblock %}
+{% block content %}
+
+<h2 class="mb-3">Funcionários Cadastrados</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for f in funcionarios %}
+        <tr>
+            <td>{{ f.nome }}</td>
+            <td>{{ f.email }}</td>
+            <td>
+                <a href="{{ url_for('editar_funcionario', id=f.id) }}" class="btn btn-sm btn-outline-primary">Editar</a>
+                <a href="{{ url_for('holerite_funcionario', id=f.id) }}" class="btn btn-sm btn-outline-secondary">Holerite</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('admin') }}" class="btn btn-secondary">Voltar</a>
+
+{% endblock %}

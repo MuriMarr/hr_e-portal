@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Mural de Avisos{% endblock %}
+{% block content %}
+<h2>Mural de Avisos</h2>
+<hr>
+{% for aviso in avisos %}
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">{{ aviso.titulo }}</h5>
+        <p class="card-text">{{ aviso.conteudo }}</p>
+        {% if aviso.imagem %}
+        <img src="{{ aviso.imagem }}" class="img-fluid mt-2" alt="Imaagem do aviso">
+        {% endif %}
+        <p class="text-muted mt-2"><small>Publicado em {{ aviso.data_publicacao.strftime('%d/%m/%Y %H:%M') }}</small></p>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

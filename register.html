@@ -9,16 +9,52 @@
         <label for="nome" class="form-label">Nome Completo</label>
         <input type="text" class="form-control" id="nome" name="nome" required>
     </div>
+
     <div class="mb-3">
         <label for="email" class="form-label">E-mail</label>
         <input type="email" class="form-control" id="email" name="email" required>
     </div>
+
     <div class="mb-3">
         <label for="senha" class="form-label">Senha</label>
         <input type="password" class="form-control" id="senha" name="senha" required>
     </div>
+
+    <div class="mb-3">
+        <label for="tipo" class="form-label">Tipo de Conta</label>
+        <select class="form-select" id="tipo" name="tipo" onchange="mostrarChave()">
+            <option value="funcionario">Funcionário</option>
+            <option value="admin">Administrador</option>
+        </select>
+    </div>
+
+    <div class="mb-3" id="chaveContainer" style="display: none;">
+        <label for="chave_admin" class="form-label">Chave de Autenticação</label>
+        <input type="text" class="form-control" id="chave_admin" name="chave_admin">
+    </div>
+
     <button type="submit" class="btn btn-primary">Registrar</button>
     <a href= "{{ url_for('login') }}" class="btn btn-link">Já tenho cadastro</a>
 </form>
+
+<script>
+    function mostrarChave() {
+        const tipo = document.getElementById('tipo').value;
+        const chaveContainer = document.getElementById('chaveContainer');
+        if (tipo === 'admin') {
+            chaveContainer.style.display = 'block';
+        } else {
+            chaveContainer.style.display = 'none';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const tipo = document.getElementById('tipo');
+        mostrarChave();
+        if (tipo) {
+            tipo.addEventListener('change', mostrarChave);
+        }
+    });
+</script>
 
 {% endblock %}
