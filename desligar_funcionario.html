@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Desligar Funcionário{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Desligar Funcionário</h2>
+    <p><strong>Nome:</strong> {{ funcionario.nome }}</p>
+    <p><strong>Email:</strong> {{ funcionario.email }}</p>
+    <p><strong>Data de Admissão:</strong> {{ funcionario.data_admissao.strftime('%d/%m/%Y') }}</p>
+    <p><strong>Data de Demissão:</strong> {{ funcionario.data_demissao.strftime('%d/%m/%Y') if funcionario.data_demissao else '—' }}</p>
+    <p><strong>Salário Mensal:</strong> R$ {{ funcionario.salario_mensal }}</p>
+    <p><strong>Total de Horas Trabalhadas:</strong> {{ total_horas }} h</p>
+    <p><strong>Valor da Rescisão (TRCT):</strong> R$ {{ valor }}</p>
+
+    <form method="POST" onsubmit="return confirm('Deseja realmente desligar este funcionário? Esta ação não pode ser desfeita.')">
+        <button type="submit" class="btn btn-danger">Confirmar Desligamento</button>
+        <a href="{{ url_for('funcionarios') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+
+    {% if funcionario.data_demissao %}
+    <div class="mt-4">
+        <a href="{{ url_for('gerar_trct', id=funcionario.id) }}" class="btn btn-primary">📄 Gerar TRCT em PDF</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

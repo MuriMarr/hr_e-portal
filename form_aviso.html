@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Novo Aviso{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Publicar Novo Aviso</h2>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Título do Aviso</label>
+            <input type="text" class="form-control" id="titulo" name="titulo" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="conteudo" class="form-label">Conteúdo</label>
+            <textarea class="form-control" id="conteudo" name="conteudo" rows="5" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="imagem" class="form-label">URL da Imagem (opcional)</label>
+            <input type="url" class="form-control" id="imagem" name="imagem" placeholder="https://">
+        </div>
+
+        <button type="submit" class="btn btn-success">Publicar Aviso</button>
+        <a href="{{ url_for('mural') }}" class="btn btn-secondary">Voltar</a>
+    </form>
+</div>
+{% endblock %}

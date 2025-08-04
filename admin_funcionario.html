@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Funcionários Cadastrados</h2>
+
+    <table class="table table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for f in funcionarios %}
+            <tr>
+                <td>{{ f.nome }}
+                <td>{{ f.email }}</td>
+                <td>
+                    {% if not f.ativo and f.data_demissao %}
+                        <a href="{{ url_for('gerar_trct', id=f.id) }}" class="btn btn-sm btn-primary">Gerar TRCT</a>
+                    {% endif %} 
+                    <a href="{{ url_for('historico_funcionario', id=f.id) }}" class="btn btn-sm btn-info">Histórico</a>
+                    <a href="{{ url_for('holerite_funcionario', id=f.id) }}" class="btn btn-sm btn-secondary">Holerite</a>
+                    <a href="{{ url_for('editar_funcionario', id=f.id) }}" class="btn btn-sm btn-warning">Editar</a>
+                    {% if f.ativo %}
+                        <a href="{{ url_for('desligar_funcionario', id=f.id) }}" class="btn btn-sm btn-danger">Desligar Funcionário</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
