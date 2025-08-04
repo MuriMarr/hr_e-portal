@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5" style="max-width: 600px;">
+    <h2 class="mb-3">Cadastrar Novo Funcionário</h2>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label for="nome">Nome completo</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" id="email" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" name="senha" id="senha" required>
+        </div>
+
+        <div class="mb=3">
+            <label for="tipo">Tipo de Usuário</label>
+            <select class="form-select" name="tipo" id="tipo" required>
+                <option value="funcionario">Funcionário</option>
+                <option value="admin">Administrador</option>
+            </select>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+    </form>
+
+    <div class="mt-3 text-center">
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Voltar ao Painel do Administrador</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5" style="max-width: 500px">
+    <h3 class="mb-3">Editar Funcionário</h3>
+    <form method="POST">
+        <div class="mb-3">
+            <label>Nome</label>
+            <input type="text" name="nome" class="form-control" value="{{ funcionario.nome }}" required>
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" value="{{ funcionario.email }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{{ url_for('funcionarios') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

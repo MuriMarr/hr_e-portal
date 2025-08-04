@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Painel do Administrador</h2>
+    <hr>
+
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card bg-light p-4 shadow-sm">
+                <h5>Funcionários Ativos</h5>
+                <p class="display-6">{{ total_funcionarios }}</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-light p-4 shadow-sm">
+                <h5>Registros no Mês</h5>
+                <p class="display-6">{{ total_registros }}</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-light p-4 shadow-sm">
+                <h5>Total de Horas Trabalhadas</h5>
+                <p class="display-6">{{ total_horas }} h</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('funcionarios') }}" class="btn btn-primary me-2">👥 Ver Funcionários</a>
+        <a href="{{ url_for('cadastrar_funcionario') }}" class="btn btn-success me-2">➕ Cadastrar Funcionário</a>
+        <a href="{{ url_for('cadastrar_admin') }}" class="btn btn-warning me-2">➕ Cadastrar Administrador</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">⛔ Sair</a>
+    </div>
+</div>
+{% endblock %}
